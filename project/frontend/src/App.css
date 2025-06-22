@@ -1,0 +1,885 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #000;
+  color: #00ff00;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset and base styles */
+body, html, #root, .beasty-bg {
+  background: #181c20;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  color: #e0e0e0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.beasty-bg {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+.beasty-topbar {
+  width: 100vw;
+  background: #181c20;
+  color: #b7c9ce;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #222;
+  padding: 0.7rem 0 0.7rem 0;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+}
+.beasty-tabs {
+  margin-left: 2.5rem;
+  display: flex;
+  gap: 1.2rem;
+}
+.beasty-tab {
+  color: #7ed6df;
+  opacity: 0.7;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0 0.2rem;
+  transition: color 0.2s, opacity 0.2s;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+}
+.beasty-tab:hover {
+  opacity: 0.9;
+}
+.beasty-tab-active {
+  color: #fff;
+  opacity: 1;
+  border-bottom: 2px solid #7ed6df;
+  font-weight: bold;
+}
+.beasty-title-version {
+  margin-left: 1.5rem;
+  color: #b7c9ce;
+  font-size: 1.02rem;
+  opacity: 0.7;
+  flex: 1;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+}
+.beasty-path {
+  margin-right: 2.5rem;
+  color: #b7c9ce;
+  font-size: 1.02rem;
+  opacity: 0.7;
+}
+
+.beasty-mainbox {
+  margin-top: 2.5rem;
+  background: #181c20;
+  border: 2px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1.5px #222, 0 2px 24px #000a;
+  min-width: 800px;
+  max-width: 900px;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.beasty-center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.beasty-logo {
+  font-size: 3.2rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 1.3rem;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+}
+.beasty-dot {
+  color: #b7c9ce;
+}
+.beasty-desc {
+  font-size: 1.25rem;
+  color: #b7c9ce;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.beasty-desc-secondary {
+  text-align: center;
+  font-size: 1.08rem;
+  color: #b0b0b0;
+  margin-top: 0.1rem;
+  margin-bottom: 0.7rem;
+}
+.beasty-italic {
+  color: #f6c177;
+  font-style: italic;
+}
+.beasty-link {
+  color: #7ed6df;
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+.beasty-by {
+  display: none !important;
+}
+.beasty-heart {
+  color: #ff4b6e;
+  font-size: 1.1em;
+  vertical-align: middle;
+}
+.beasty-author {
+  color: #7ecfff;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.beasty-info-box {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  margin-bottom: 2.2rem;
+  margin-top: 1.2rem;
+}
+.beasty-file-info {
+  background: #181c20;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+  min-width: 180px;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  box-shadow: 0 0 0 1px #222;
+}
+.beasty-file {
+  color: #7ed6df;
+}
+.beasty-deps-box {
+  background: #181c20;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+  min-width: 320px;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  box-shadow: 0 0 0 1px #222;
+}
+.beasty-deps-title {
+  color: #b7c9ce;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+}
+.beasty-deps-table {
+  width: 100%;
+  margin-top: 0.2rem;
+}
+.beasty-deps-header {
+  display: flex;
+  justify-content: space-between;
+  color: #b7c9ce;
+  font-size: 1.05rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+.beasty-deps-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  margin-bottom: 0.1rem;
+}
+.beasty-dep-green {
+  color: #a3be8c;
+}
+
+.beasty-footer-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  font-size: 1.08rem;
+  color: #b7c9ce;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+}
+.beasty-footer-hint {
+  color: #b7c9ce;
+  font-weight: 500;
+  margin: 0 0.1rem;
+}
+.beasty-footer-orange {
+  color: #f6c177;
+}
+.beasty-footer-yellow {
+  color: #e5c07b;
+}
+.beasty-footer-red {
+  color: #f67280;
+}
+
+.beasty-auth-btns {
+  margin-right: 2.5rem;
+  display: flex;
+  gap: 0.7rem;
+}
+.beasty-btn {
+  background: #23272e;
+  color: #b7c9ce;
+  border: 1.5px solid #444;
+  border-radius: 5px;
+  font-size: 1.02rem;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.35rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+}
+.beasty-btn:hover {
+  background: #444;
+  color: #fff;
+  border: 1.5px solid #7ed6df;
+}
+
+.beasty-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.beasty-modal-content {
+  background: #181c20;
+  padding: 2rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.beasty-modal-content h2 {
+  color: #b7c9ce;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+}
+
+.beasty-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.beasty-modal-content input {
+  width: 100%;
+  padding: 0.8rem;
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.beasty-modal-content input:focus {
+  border-color: #ff4b6e;
+  outline: none;
+}
+
+.beasty-modal-content input::placeholder {
+  color: #666;
+}
+
+.beasty-modal-content button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #ff4b6e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.beasty-modal-content button:hover {
+  background: #ff3358;
+}
+
+.beasty-modal-content button:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.beasty-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #666;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.beasty-modal-close:hover {
+  color: #fff;
+}
+
+.beasty-error {
+  color: #ff4b6e;
+  background: rgba(255, 75, 110, 0.1);
+  padding: 0.8rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid #ff4b6e;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  letter-spacing: 2px;
+  font-size: 2.2rem;
+  text-transform: lowercase;
+}
+
+.pixel-logo-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.pixel-letter {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pixel-row {
+  display: flex;
+  gap: 2px;
+}
+.pixel-block {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 2px;
+}
+.pixel-empty {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: transparent;
+}
+
+.beasty-info-merged-box {
+  background: #181c20;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+  margin-bottom: 2.2rem;
+  margin-top: 1.2rem;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  box-shadow: 0 0 0 1px #222;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  width: 100%;
+  min-height: 60px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+.beasty-info-merged-box .beasty-file-info,
+.beasty-info-merged-box .beasty-deps-box {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: unset;
+}
+
+/* Custom Dropdown */
+.custom-dropdown-container {
+  width: 100%;
+  position: relative;
+  font-family: inherit;
+  margin: 1.2rem 0;
+  box-sizing: border-box;
+}
+
+.custom-dropdown-header {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: #181c20;
+  border: 1.5px solid #444;
+  color: #7ecfff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.custom-dropdown-header:hover {
+  border-color: #7ecfff;
+}
+
+.custom-dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-top: none;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.custom-dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #7ecfff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.custom-dropdown-item:hover {
+  background: #2a2a2a;
+}
+
+.custom-dropdown-item.selected {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+/* Remove old select styles */
+.beasty-http-input {
+  display: none;
+}
+
+.beasty-http-input:focus {
+  outline: none;
+  border-color: #7ecfff;
+  box-shadow: 0 0 0 1px #7ecfff;
+}
+
+.beasty-http-input option {
+  background: #1a1a1a;
+  color: #7ecfff;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  padding: 0.5rem;
+}
+
+/* Hide the default dropdown arrow in IE */
+.beasty-http-input::-ms-expand {
+  display: none;
+}
+
+/* Terminal box */
+.terminal-box {
+  background: #181c20;
+  border: 1.5px solid #444;
+  border-radius: 6px;
+  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+  width: 100%;
+  margin: 1.2rem 0;
+  color: #e0e0e0;
+  font-size: 1.08rem;
+  box-shadow: 0 0 0 1px #222;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  box-sizing: border-box;
+}
+.terminal-line {
+  font-size: 1.08rem;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+.terminal-user {
+  color: #7ed6df;
+  font-weight: bold;
+}
+.terminal-path {
+  color: #e5c07b;
+  font-weight: bold;
+  margin-left: 0.2rem;
+}
+.terminal-cursor-line {
+  display: flex;
+  align-items: center;
+  height: 1.2em;
+  margin-top: 0.7rem;
+}
+.terminal-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 1.1em;
+  background: #e0e0e0;
+  margin-left: 0.2rem;
+  animation: blink-cursor 1s steps(1) infinite;
+}
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-command {
+  color: #e0e0e0;
+  margin-left: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.beasty-info-blue {
+  color: #ff4b6e;
+  margin-top: 20px;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 0.9rem;
+  background: rgba(255, 75, 110, 0.1);
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #ff4b6e;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 110, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 75, 110, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 110, 0);
+  }
+}
+
+.beasty-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.beasty-footer-love {
+  color: #b7c9ce;
+  font-size: 0.9rem;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+}
+
+.beasty-visitor-count {
+  color: #7ed6df;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.beasty-doc-link {
+  color: #ff4b6e;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.beasty-doc-link:hover {
+  color: #ff3358;
+  border-bottom: 1px solid #ff3358;
+}
+
+.beasty-send-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s;
+  margin: 0;
+  line-height: 1;
+}
+
+.beasty-send-btn:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.beasty-send-btn:active:not(:disabled) {
+  opacity: 0.6;
+}
+
+.beasty-send-btn-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@keyframes registerBlink {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.beasty-register-btn {
+  animation: registerBlink 2s infinite;
+}
+
+.beasty-dot {
+  color: #ff4b6e;
+}
+
+/* Update all font-family references to use only Google Fonts */
+.beasty-logo, 
+.beasty-title, 
+.beasty-tab, 
+.beasty-btn,
+.pixel-font,
+.beasty-path,
+.beasty-footer-hint,
+.beasty-title-version {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+}
+
+/* Remove any other font-family declarations that might reference Pixelleteth */
+
+.beasty-docs-ref {
+  color: #7ed6df;
+  font-weight: normal;
+}
+
+.json-key {
+  font-family: 'Courier New', monospace !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  color: #7ed6df !important;
+}
+
+.terminal-response pre {
+  font-family: 'Courier New', monospace !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
+  font-weight: bold !important;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.terminal-response pre * {
+  font-family: 'Courier New', monospace !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
+  font-weight: bold !important;
+}
+
+.terminal-heading {
+  color: #a3be8c !important;
+  font-weight: bold;
+}
+
+.remaining-requests {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #1e2228;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remaining-requests-text {
+  color: #b7c9ce;
+}
+
+.remaining-requests-count {
+  color: #f6c177;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.beasty-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.password-input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-strength {
+  margin-top: 5px;
+  font-size: 0.9em;
+  font-family: 'VT323', monospace;
+  transition: color 0.3s ease;
+}
+
+.password-requirements {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.password-requirements small {
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+}
+
+.password-requirements ul {
+  list-style: none;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.password-requirements li {
+  position: relative;
+  margin-bottom: 3px;
+  transition: color 0.3s ease;
+}
+
+.password-requirements li::before {
+  content: "•";
+  position: absolute;
+  left: -15px;
+  color: #ff4b6e;
+  transition: color 0.3s ease;
+}
+
+.password-requirements li.requirement-met {
+  color: #4bff4b;
+}
+
+.password-requirements li.requirement-met::before {
+  color: #4bff4b;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.9rem !important;
+  color: #7ed6df;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+}
+
+.animated-text {
+  font-family: 'Courier New', monospace !important;
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+  color: #4bff4b;
+  text-shadow: 0 0 5px rgba(75, 255, 75, 0.5);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #4bff4b;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.ascii-favicon {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #7ed6df;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 0 5px rgba(126, 214, 223, 0.5);
+}

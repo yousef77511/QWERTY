@@ -1,0 +1,28 @@
+{
+  "name": "beasty-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "node app/main.js",
+    "dev": "nodemon app/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewSmoke38/beasty-the-http-server.git"
+  },
+  "author": "Shivani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NewSmoke38/beasty-the-http-server/issues"
+  },
+  "homepage": "https://github.com/NewSmoke38/beasty-the-http-server#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
